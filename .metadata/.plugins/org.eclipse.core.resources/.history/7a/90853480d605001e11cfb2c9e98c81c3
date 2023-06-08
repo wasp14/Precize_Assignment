@@ -1,0 +1,9 @@
+package com.sat_results.Service;
+
+import com.sat_results.Dao.resultsRepo;
+
+public interface satResultsService extends resultsRepo{
+
+	
+	
+}

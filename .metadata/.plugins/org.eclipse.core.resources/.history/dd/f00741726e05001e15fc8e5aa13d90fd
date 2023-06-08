@@ -1,0 +1,64 @@
+package com.sat_results.Models;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "SAT_RESULTS")
+public class satResults {
+	@Column(name = "Name")
+	@Id
+	private String name;
+	@Column(name = "Address");
+	private String address;
+	private String city;
+	private String country;
+	private int pincode;
+	private int sat_score;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public int getPincode() {
+		return pincode;
+	}
+	public void setPincode(int pincode) {
+		this.pincode = pincode;
+	}
+	public int getSat_score() {
+		return sat_score;
+	}
+	public void setSat_score(int sat_score) {
+		this.sat_score = sat_score;
+	}
+	
+	
+	
+
+	
+	
+	
+	
+}

@@ -1,0 +1,8 @@
+package com.sat_results.Dao;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class serviceImp implements satResultService{
+
+}
