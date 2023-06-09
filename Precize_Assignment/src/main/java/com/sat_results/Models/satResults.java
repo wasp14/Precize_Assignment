@@ -1,16 +1,22 @@
 package com.sat_results.Models;
 
+import org.antlr.v4.runtime.misc.NotNull;
+import org.springframework.format.annotation.NumberFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "SAT_RESULTS")
 public class satResults {
-	@Column(name = "Name")
 	@Id
-	private String name;
+	@Column(name = "Name")
+	private String name = "Default Name";
 	@Column(name = "Address")
 	private String address;
 	@Column(name = "City")
@@ -20,14 +26,17 @@ public class satResults {
 	@Column(name = "Pincode")
 	private int pincode;
 	@Column(name = "Score")
-	private int sat_score;
+	private int satscore;
 	@Column(name = "Result")
 	private String result;
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
+		if(name!= null)
 		this.name = name;
+		else
+			this.name = "Enter your name";
 	}
 	public String getAddress() {
 		return address;
@@ -54,10 +63,10 @@ public class satResults {
 		this.pincode = pincode;
 	}
 	public int getSat_score() {
-		return sat_score;
+		return satscore;
 	}
 	public void setSat_score(int sat_score) {
-		this.sat_score = sat_score;
+		this.satscore = sat_score;
 	}
 	public String getResult() {
 		return result;
@@ -77,14 +86,22 @@ public class satResults {
 		this.city = city;
 		this.country = country;
 		this.pincode = pincode;
-		this.sat_score = sat_score;
+		this.satscore = sat_score;
 	}
+	
+//	  @PrePersist
+//	    public void prePersist() {
+//	        if (this.name == null) {
+//	            // Set the default value for the ID field
+//	            this.name = "Default Name"; // Replace with your desired default value
+//	        }
+//	    }
 	
 	
 	@Override
 	public String toString() {
 		return "satResults [name=" + name + ", address=" + address + ", city=" + city + ", country=" + country
-				+ ", pincode=" + pincode + ", sat_score=" + sat_score + ", result=" + result + "]";
+				+ ", pincode=" + pincode + ", sat_score=" + satscore + ", result=" + result + "]";
 	}
 	
 	

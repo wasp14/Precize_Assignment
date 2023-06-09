@@ -1,0 +1,16 @@
+
+server.port=8083
+spring.jpa.show-sql=true
+spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+spring.datasource.url=jdbc:mysql://localhost:3306/Precize_Assignment
+spring.datasource.username=Anirudha
+spring.datasource.password=sam
+
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+
+spring.jpa.hibernate.ddl-auto=update
+
+
+logging.level.org.hibernate.SQL=debug
+spring.jpa.defer-datasource-initialization = true
