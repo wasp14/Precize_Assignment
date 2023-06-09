@@ -21,6 +21,13 @@ function CrudOperations () {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+
+  const [show2, setShow2] = useState(false);
+
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
+
   const[name, setName] = useState('');
   const[address, setAddress] = useState('');
   const[city, setCity] = useState('');
@@ -74,6 +81,39 @@ if(window.confirm("Sure you want to delete this SAT RESULT?")===true)
       handleShow();
   }
  
+  const handleUpdateScore=(name)=>
+  {
+      handleShow2();
+  }
+
+  // const handleUpdateBackend=(name)=>
+  //   {
+  //    const url5 = `http://localhost:8080/updateScore/${name}`;
+  //    const data ={
+            
+  //            score
+
+  //    };
+  //    axios.post(url5,data,{
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },}).then((response)=>{
+  //           const result = response.data;    
+  //          if(result == 200)
+  //          {
+  //           getData();
+  //          }
+  //           });
+  //           clear();
+  //   };
+
+
+
+
+
+
+
+
 
   const handleGetRank=(name)=>
   {
@@ -93,7 +133,7 @@ if(window.confirm("Sure you want to delete this SAT RESULT?")===true)
 
   const handleSaveBackend=()=>
     {
-     const url = 'http://localhost:8080/storeResult';
+     const url4 = 'http://localhost:8080/storeResult';
      const data ={
             
             'name' : name,
@@ -104,7 +144,7 @@ if(window.confirm("Sure you want to delete this SAT RESULT?")===true)
              'sat_score' : score
 
      };
-     axios.post(url,data,{
+     axios.post(url4,data,{
         headers: {
           'Content-Type': 'application/json',
         },}).then((response)=>{
@@ -153,6 +193,7 @@ if(window.confirm("Sure you want to delete this SAT RESULT?")===true)
       data && data.length>0 ?
       data.map((item,index)=>{
           return(
+            
               <tr key ={index}>
               <td>{item.name}</td>
               <td>{item.city}</td>
@@ -161,7 +202,7 @@ if(window.confirm("Sure you want to delete this SAT RESULT?")===true)
               <td>{item.sat_score}</td>
               <td>{item.result}</td>
               <td colSpan={2}>
-              <Button variant="outline-primary" >Update</Button>{' '} &nbsp;
+              <Button variant="outline-primary" onClick={()=>handleUpdateScore(item.name)}>Update</Button>{' '} &nbsp;
               <Button variant="outline-secondary" onClick={()=>handleGetRank(item.name)}>Get Rank</Button>{' '}
               <Button variant="outline-danger" onClick={()=>handleDelete(item.name)}>Delete</Button>{' '}
               
@@ -251,6 +292,39 @@ if(window.confirm("Sure you want to delete this SAT RESULT?")===true)
           </Button>
         </Modal.Footer>
       </Modal>
+
+
+
+      <Modal show2={show2} onHide={handleClose2}>
+        <Modal.Header closeButton>
+
+            
+          <Modal.Title>Update Score</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1" onChange={(e) => setScore(e.target.value)}>
+              <Form.Label>Score</Form.Label>
+              <Form.Control
+                type="number"
+                
+                autoFocus
+              />
+            </Form.Group>
+           
+            </Form>
+            </Modal.Body>
+            <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose2}>
+            Close
+          </Button>
+          <Button variant="primary" >
+            Save
+          </Button>
+        </Modal.Footer>
+            </Modal>
+
+
 </Fragment>
 
       );
